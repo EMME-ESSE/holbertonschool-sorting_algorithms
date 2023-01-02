@@ -1,9 +1,3 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <unistd.h>
-#include <stddef.h>
-#include <stdbool.h>
 #include "sort.h"
 /**
  * * bubble_sort - Sorts an array of integer in ascending order
