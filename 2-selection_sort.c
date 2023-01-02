@@ -6,12 +6,12 @@
  */
 void selection_sort(int *array, size_t size)
 {
-	unsigned int min_index;
-	
-	for(unsigned int i = 0; i < size - 1; i++) 
+	unsigned int min_index, i, j;
+
+	for(i = 0; i < size - 1; i++) 
 	{
 		min_index = i;
-		for(unsigned int j = i + 1; j < size; j++) 
+		for(j = i + 1; j < size; j++) 
 		{
 			if(array[min_index] > array[j]) 
 			{
