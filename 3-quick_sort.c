@@ -28,6 +28,7 @@ void quicksort_recursion(int array[], size_t size, int first, int last)
 		j = last;
 		while (i < j)
 		{
+			print_array(array, size);
 			while (array[i] <= array[def] && i < last)
 				i++;
 			while (array[j] > array[def])
@@ -44,6 +45,5 @@ void quicksort_recursion(int array[], size_t size, int first, int last)
 		array[j] = temp;
 		quicksort_recursion(array, size, first, j - 1);
 		quicksort_recursion(array, size, j + 1, last);
-		print_array(array, size);
 	}
 }
