@@ -13,8 +13,8 @@ void quick_sort(int *array, size_t size)
 /**
 ** quick - Partitions the array around a pivot and returns the pivot index
 ** @array: The array of integers
-** @high: the highest start value
-** @low: the lowest start value
+** @higher: the highest start value
+** @lower: the lowest start value
 **/
 void quick(int *array, size_t lower, size_t higher, size_t size)
 {
