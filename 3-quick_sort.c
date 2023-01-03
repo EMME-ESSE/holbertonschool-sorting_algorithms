@@ -34,9 +34,10 @@ void quicksort_recursion(int array[], int first, int last)
 				temp = array[i];
 				array[i] = array[j];
 				array[j] = temp;
-				print_array(array, size);
+				printf("%d, ", array);
 			}
 		}
+		printf("\n");
 		temp = array[def];
 		array[def] = array[j];
 		array[j] = temp;
