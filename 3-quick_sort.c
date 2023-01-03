@@ -36,9 +36,9 @@ void quicksort_recursion(int array[], size_t size, int first, int last)
 				temp = array[i];
 				array[i] = array[j];
 				array[j] = temp;
-				print_array(array, size);
 			}
 		}
+		print_array(array, size);
 		temp = array[def];
 		array[def] = array[j];
 		array[j] = temp;
