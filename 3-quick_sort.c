@@ -15,6 +15,7 @@ void quick_sort(int *array, size_t size)
 ** @array: The array of integers
 ** @higher: the highest start value
 ** @lower: the lowest start value
+** @size: array size
 **/
 void quick(int *array, size_t lower, size_t higher, size_t size)
 {
