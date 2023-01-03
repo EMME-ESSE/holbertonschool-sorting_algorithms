@@ -11,7 +11,7 @@ void quick_sort(int *array, size_t size)
 	
 	if (low < high)
 	{
-		int pivot_index = partition(array, low, high);
+		int pivot_index = partition(array, low, high, size);
 
 		quick_sort(array, pivot_index);
 		quick_sort(array + pivot_index + 1, size - pivot_index - 1);
@@ -23,19 +23,18 @@ void quick_sort(int *array, size_t size)
  * * @high: the highest start value
  * * @low: the lowest start value
 **/
-int partition(int *array, int low, int high)
+int partition(int *array, int low, int high, size_t size)
 {
 	int pivot = array[high];
 	int i = low - 1, j;
 
 	for (j = low; j <= high - 1; j++)
 	{
-		printf("%d, ", array[j]);
-        	if (array[j] < pivot)
+        	print_array(array, size);
+		if (array[j] < pivot)
 		{
 			i++;
 			swap(&array[i], &array[j]);
-			printf("\n");
 		}
 	}
 	swap(&array[i + 1], &array[high]);
