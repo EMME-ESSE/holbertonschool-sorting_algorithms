@@ -1,53 +1,64 @@
 #include "sort.h"
 /**
- * * quick_sort - Pass the parameters to the quicksort_recursion function
- * * @array: The array of integers
- * * @size: Size of the array
+** quick_sort - Pass the parameters to the quicksort_recursion function
+** @array: The array of integers
+** @size: Size of the array
 **/
 void quick_sort(int *array, size_t size)
 {
-	int low = 0;
-	int high = size - 1;
-	
-	if (low < high)
-	{
-		int pivot_index = partition(array, low, high, size);
-
-		quick_sort(array, pivot_index);
-		quick_sort(array + pivot_index + 1, size - pivot_index - 1);
-	}
+	if (!array || !size)
+		return;
+	quick(array, 0, size - 1, size);
 }
 /**
- * * partition - Partitions the array around a pivot and returns the pivot index
- * * @array: The array of integers
- * * @high: the highest start value
- * * @low: the lowest start value
+** quick - Partitions the array around a pivot and returns the pivot index
+** @array: The array of integers
+** @high: the highest start value
+** @low: the lowest start value
 **/
-int partition(int *array, int low, int high, size_t size)
+void quick(int *array, size_t lower, size_t higher, size_t size)
 {
-	int pivot = array[high];
-	int i = low - 1, j;
+	size_t par;
 
-	for (j = low; j <= high - 1; j++)
+	if (lower >= higher)
+		return;
+	par = partition(array, lower, higher, size);
+	if (par > 0)
+		quick(array, lower, par - 1, size);
+	quick(array, par + 1, higher, size);
+}
+/**
+ * partition - Partitions the array around a pivot and returns the pivot index 
+ * @array: array
+ * @lower: lower index
+ * @higher: higher index
+ * @size: array size
+ * Return: The index
+**/
+size_t partition(int *array, size_t lower, size_t higher, size_t size)
+{
+	int pivot = array[higher];
+	int temp;
+	size_t i = lower, j;
+
+	for (j = i; j < higher; j++)
 	{
-		if (array[j] < pivot)
-		{
+		if (i == j && array[j] <= pivot)
 			i++;
-			swap(&array[i], &array[j]);
+		else if (array[j] <= pivot)
+		{
+			temp = array[i];
+			array[i] = array[j];
+			array[j] = temp;
+			i++;
 			print_array(array, size);
 		}
 	}
-	swap(&array[i + 1], &array[high]);
-	return i + 1;
-}
-/**
-* * swap - Swaps the values
-* * @a: array of i
-* * @b: array of high
-**/
-void swap(int *a, int *b)
-{
-	int temp = *a;
-	*a = *b;
-	*b = temp;
+	if (higher != i)
+	{
+		array[higher] = array[i];
+		array[i] = pivot;
+		print_array(array, size);
+	}
+	return (i);
 }
