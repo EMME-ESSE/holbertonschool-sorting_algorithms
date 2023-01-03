@@ -1,49 +1,54 @@
 #include "sort.h"
 /**
-* quick_sort - Pass the parameters to the quicksort_recursion function
-* @array: The array of integers
-* @size: Size of the array
+ * * quick_sort - Pass the parameters to the quicksort_recursion function
+ * * @array: The array of integers
+ * * @size: Size of the array
 **/
 void quick_sort(int *array, size_t size)
 {
-	if (!array || !size)
-		return;
-	quicksort_recursion(array, size, 0, size - 1);
+	int low = 0;
+	int high = size - 1;
+	
+	if (low < high)
+	{
+		int pivot_index = partition(array, low, high);
+
+		quick_sort(array, pivot_index);
+		quick_sort(array + pivot_index + 1, size - pivot_index - 1);
+	}
 }
 /**
- * quicksort_recursion - Sorts an array of integers in ascending order
- * @array: The array of integers
- * @first: first parameter to compare
- * @last: last parameter to compare
- * @size: Size of the array
+ * * partition - Partitions the array around a pivot and returns the pivot index
+ * * @array: The array of integers
+ * * @high: the highest start value
+ * * @low: the lowest start value
 **/
-void quicksort_recursion(int array[], size_t size, int first, int last)
+int partition(int *array, int low, int high)
 {
-	int temp, def, i, j;
+	int pivot = array[high];
+	int i = low - 1;
 
-	if (first < last)
+	for (int j = low; j <= high - 1; j++)
 	{
-		def = first;
-		i = first;
-		j = last;
-		while (i < j)
+		printf("%d, ", array[j]);
+        	if (array[j] < pivot)
 		{
-			while (array[i] <= array[def] && i < last)
-				i++;
-			while (array[j] > array[def])
-				j--;
-			if (i < j)
-			{
-				temp = array[i];
-				array[i] = array[j];
-				array[j] = temp;
-			}
+			i++;
+			swap(&array[i], &array[j]);
 		}
-		temp = array[def];
-		array[def] = array[j];
-		array[j] = temp;
-		print_array(array, size);
-		quicksort_recursion(array, size, first, j - 1);
-		quicksort_recursion(array, size, j + 1, last);
 	}
+	printf("\n");
+	swap(&array[i + 1], &array[high]);
+	return i + 1;
+}
+/**
+* * swap - Swaps the values
+* * @a: array of i
+* * @b: array of high
+**/
+void swap(int *a, int *b)
+{
+	int temp = *a;
+	*a = *b;
+	*b = temp;
 }
