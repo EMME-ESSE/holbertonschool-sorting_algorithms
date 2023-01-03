@@ -29,12 +29,12 @@ void quick(int *array, size_t lower, size_t higher, size_t size)
 	quick(array, par + 1, higher, size);
 }
 /**
- * partition - Partitions the array around a pivot and returns the pivot index 
- * @array: array
- * @lower: lower index
- * @higher: higher index
- * @size: array size
- * Return: The index
+* partition - Partitions the array around a pivot and returns the pivot index
+* @array: array
+* @lower: lower index
+* @higher: higher index
+* @size: array size
+* Return: The index
 **/
 size_t partition(int *array, size_t lower, size_t higher, size_t size)
 {
