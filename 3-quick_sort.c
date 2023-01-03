@@ -11,24 +11,6 @@ void quick_sort(int *array, size_t size)
 	quick(array, 0, size - 1, size);
 }
 /**
-** quick - Partitions the array around a pivot and returns the pivot index
-** @array: The array of integers
-** @higher: the highest start value
-** @lower: the lowest start value
-** @size: array size
-**/
-void quick(int *array, size_t lower, size_t higher, size_t size)
-{
-	size_t par;
-
-	if (lower >= higher)
-		return;
-	par = partition(array, lower, higher, size);
-	if (par > 0)
-		quick(array, lower, par - 1, size);
-	quick(array, par + 1, higher, size);
-}
-/**
 * partition - Partitions the array around a pivot and returns the pivot index
 * @array: array
 * @lower: lower index
@@ -62,4 +44,22 @@ size_t partition(int *array, size_t lower, size_t higher, size_t size)
 		print_array(array, size);
 	}
 	return (i);
+}
+/**
+** quick - Partitions the array around a pivot and returns the pivot index
+** @array: The array of integers
+** @higher: the highest start value
+** @lower: the lowest start value
+** @size: array size
+**/
+void quick(int *array, size_t lower, size_t higher, size_t size)
+{
+        size_t par;
+
+        if (lower >= higher)
+                return;
+        par = partition(array, lower, higher, size);
+        if (par > 0)
+                quick(array, lower, par - 1, size);
+        quick(array, par + 1, higher, size);
 }
