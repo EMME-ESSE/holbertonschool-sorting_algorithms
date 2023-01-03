@@ -1,5 +1,5 @@
 #include "sort.h"
-/*
+/**
 * quick_sort - Pass the parameters to the quicksort_recursion function
 * @array: The array of integers
 * @size: Size of the array
@@ -7,6 +7,7 @@
 void quick_sort(int *array, size_t size)
 {
 	quicksort_recursion(array, 0, size - 1);
+	print_array(array, size);
 }
 /**
  * quicksort_recursion - Sorts an array of integers in ascending order
@@ -34,13 +35,12 @@ void quicksort_recursion(int array[], int first, int last)
 				temp = array[i];
 				array[i] = array[j];
 				array[j] = temp;
-				printf("%d, ", array[i]);
 			}
 		}
 		temp = array[def];
 		array[def] = array[j];
 		array[j] = temp;
-		quicksort_recursion(array,first,j-1);
-		quicksort_recursion(array,j+1,last);
+		quicksort_recursion(array, first, j - 1);
+		quicksort_recursion(array, j + 1, last);
 	}
 }
