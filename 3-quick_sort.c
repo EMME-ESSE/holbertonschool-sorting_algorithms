@@ -36,6 +36,7 @@ int partition(int *array, int low, int high)
 			i++;
 			swap(&array[i], &array[j]);
 		}
+		printf("\n");
 	}
 	swap(&array[i + 1], &array[high]);
 	return i + 1;
