@@ -15,6 +15,7 @@ void quick_sort(int *array, size_t size)
  * @array: The array of integers
  * @first: first parameter to compare
  * @last: last parameter to compare
+ * @size: Size of the array
 **/
 void quicksort_recursion(int array[], size_t size, int first, int last)
 {
@@ -38,11 +39,11 @@ void quicksort_recursion(int array[], size_t size, int first, int last)
 				array[j] = temp;
 			}
 		}
-		print_array(array, size);
 		temp = array[def];
 		array[def] = array[j];
 		array[j] = temp;
 		quicksort_recursion(array, size, first, j - 1);
 		quicksort_recursion(array, size, j + 1, last);
+		print_array(array, size);
 	}
 }
