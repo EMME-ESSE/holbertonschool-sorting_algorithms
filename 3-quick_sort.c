@@ -54,12 +54,12 @@ size_t partition(int *array, size_t lower, size_t higher, size_t size)
 **/
 void quick(int *array, size_t lower, size_t higher, size_t size)
 {
-        size_t par;
+	size_t par;
 
-        if (lower >= higher)
-                return;
-        par = partition(array, lower, higher, size);
-        if (par > 0)
-                quick(array, lower, par - 1, size);
-        quick(array, par + 1, higher, size);
+	if (lower >= higher)
+		return;
+	par = partition(array, lower, higher, size);
+	if (par > 0)
+		quick(array, lower, par - 1, size);
+	quick(array, par + 1, higher, size);
 }
