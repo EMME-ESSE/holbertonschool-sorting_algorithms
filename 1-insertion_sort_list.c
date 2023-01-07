@@ -7,11 +7,9 @@
  **/
 void swap_nodes(listint_t *node1, listint_t *node2)
 {
-	int temp;
-
-	temp = node1->n;
-	node1->n = node2->n;
-	node2->n = temp;
+	listint_t *temp = node1;
+	node1 = node2;
+	node2 = temp;
 }
 /**
  * listint_len - function that returns the number of elements in a linkedlist
